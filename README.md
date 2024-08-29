@@ -26,18 +26,17 @@ This web application uses image classification to detect diseases in crops. By l
 4. **Deployment:** The application was deployed using Google Cloud Platform, ensuring scalability and reliability.
 
 ### Setup Instructions
-1. **Clone the Repository:**
-   git clone https://github.com/yourusername/Crop_Disease_Detection.git
+1. **Clone the Repository:**  <br>
+   git clone https://github.com/sbhumkar07/Crop_Care.git <br>
    cd Crop_Disease_Detection
-2. **Set Up a Virtual Environment:**
+2. **Set Up a Virtual Environment:**  <br>
+    python -m venv env <br>
+    source env/bin/activate
 
-    python -m venv env
-    source env/bin/activate  # On Windows: env\Scripts\activate
-
-3. **Install Required Libraries:**
+3. **Install Required Libraries:**  <br>
     pip install -r requirements.txt
 
-4. **Download the Model Weights:**
+4. **Download the Model Weights:**  <br>
     Ensure that you have the .h5 model files in the static/weights directory. If not, download them or train your models as required.
 
 ### How to Run the Project
@@ -55,7 +54,8 @@ Model Accuracy
 The models have been fine-tuned on a custom dataset, achieving high accuracy on common crop diseases. However, the accuracy may vary with the quality and diversity of the input images.
 
 ### Running Tests
-Python Tests: To run the Python tests, navigate to the project directory and run: python -m unittest discover tests
+Python Tests: To run the Python tests, navigate to the project directory and run: <br> 
+python -m unittest discover tests
 
 ## Tech Stack
 - **Libraries & Software:** Jumpy, Matplotlib, TensorFlow, Keras, Flask Framework, Anaconda Prompt, Google Cloud Platform.
