@@ -20,14 +20,6 @@ from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.applications.imagenet_utils import decode_predictions
 
-"""
-def resize_image_tom(image):
-    resized_image = cv2.resize(image, (256,256)) #Resize all the images to 128X128 dimensions
-    if(len(resized_image.shape)!=3):
-        resized_image = cv2.cvtColor(resized_image,cv2.COLOR_GRAY2RGB) #Convert to RGB
-    return resized_image
-"""
-
 
 """Instantiating the flask object"""
 app = Flask(__name__)
@@ -92,13 +84,6 @@ def index():
         test_image = np.expand_dims(test_image, axis = 0)
         data=test_image
 
-
-
-
-      #model=get_model(type_)[0]
-      #model = load_model("static/weights/tomato.h5")
-      #type_="tom"
-
       if(type_=='tom'):
          model=load_model("static/weights/tomato.h5")
          pred_val = translate_tomato(model.predict(data))
@@ -146,29 +131,6 @@ def index():
     return jsonify(final_json)
   return jsonify({"empty":True})
 
-"""This function is used to load the model from disk.
-def load_model_(model_name):
-  model_name = os.path.join("static/weights",model_name)
-  model = load_model(model_name)
-  return model
-"""
-
-"""This function is used to load the specific model for specific request calls. This
-function will return a list of dictionary items, where the key will contain the loaded
-models and the value will contain the request type."""
-"""
-def get_model(name = None):
-  model_name = []
-  if(name=='tom'):
-    model_name.append({"model": load_model("static/weights/tomato.h5"), "type": name})
-  elif(name=='grape'):
-    model_name.append({"model": load_model_("grape.h5"), "type": name})
-  #print(model_name)
-  return model_name
-
-"""
-
-
 """preds will contain the predictions made by the model. We will take the class probabalities and
 store them in individual variables. We will return the class probabilities and the final predictions
 made by the model to the frontend. The value contained in variables total and prediction will be
@@ -190,37 +152,6 @@ def translate_corn(preds):
 def translate_potato(preds):
   dicti=["Early_blight - लवकर येणारा करपा SOLUTION Treatment of early blight includes prevention by planting potato varieties that are resistant to the disease; late maturing are more resistant than early maturing varieties. Avoid overhead irrigation and allow for sufficient aeration between plants to allow the foliage to dry as quickly as possible","Late_blight - उशीरा येणारा करपा SOLUTION The severe late blight can be effectively managed with prophylactic spray of mancozeb at 0.25% followed by cymoxanil+mancozeb or dimethomorph+mancozeb at 0.3% at the onset of disease and one more spray of mancozeb at 0.25% seven days after application of systemic fungicides in West Bengal.","Healthy - your crop is fine , No Problem - तंदुरुस्त आहे"]
   return dicti[np.argmax(preds)]
-
-
-
-  """list_proba = [y_proba_Class0, y_proba_Class1, y_proba_Class2, y_proba_Class3,y_proba_Class4,y_proba_Class5,y_proba_Class6,y_proba_Class7,y_proba_Class8,y_proba_Class9]
-  statements = [
-      "Inference: The image has high evidence of Bacterial Spot.",
-      "Inference: The image has high evidence of Early Blight.",
-      "Inference: The image has high evidence of Late Blight.",
-      "Inference: The image has high evidence of leaf mold.",
-      "Inference: The image has high evidence of Septoria Leaf Spot.",
-      "Inference: The image has high evidence of Spider_mites Two-spotted_spider_mite.",
-      "Inference: The image has high evidence of Target Spot.",
-      "Inference: The image has high evidence of Tomato_Yellow_Leaf_Curl_Virus.",
-      "Inference: The image has high evidence of Tomato mosaic virus.",
-      "Inference: The image has high evidence of Healthy."]
-  index = list_proba.index(max(list_proba))
-  prediction = statements[index]
-
-  return total, prediction"""
-
-#Predict image using VGG16 pretrained models
-
-"""
-def convert_results(string):
-  name = string.replace("_"," ")
-  name = name.replace("-"," ")
-  name = name.title()
-  return name
-"""
-
-
 
 
 if __name__=="__main__":
