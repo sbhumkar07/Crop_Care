@@ -1,0 +1,23 @@
+# Ignore model weight files
+*.h5
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore log files
+*.log
+
+# Ignore virtual environment directories
+env/
+venv/
+
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore environment variables and sensitive files
+.env
+
+# Ignore system files
+.DS_Store
+Thumbs.db
